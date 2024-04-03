@@ -44,7 +44,6 @@ model = torchvision.models.resnet101(pretrained=True)
 # fix keep only adam.
 optimizer_list = [
     optim.Adam(model.fc.parameters()),
-]
 
 # Loss function
 loss_function = nn.CrossEntropyLoss()
