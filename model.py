@@ -37,11 +37,12 @@ training_loader = torch.utils.data.DataLoader(
 )
 
 # Model initialization
-model = torchvision.models.resnet101(pretrained=True)
+#version - 2 using densenet model
+model = torchvision.models.densenet201(pretrained=True)
 
 # List of optimizers
+# version 2 using all others except Adam.
 optimizer_list = [
-    optim.Adam(model.fc.parameters()),
     optim.Adagrad(model.fc.parameters()),
     optim.Adadelta(model.fc.parameters()),
     optim.RMSprop(model.fc.parameters()),
