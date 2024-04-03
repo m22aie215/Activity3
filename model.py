@@ -37,14 +37,14 @@ training_loader = torch.utils.data.DataLoader(
 )
 
 # Model initialization
-resnet_model = torchvision.models.resnet101(pretrained=True)
+model = torchvision.models.resnet101(pretrained=True)
 
 # List of optimizers
 optimizer_list = [
-    optim.Adam(resnet_model.fc.parameters()),
-    optim.Adagrad(resnet_model.fc.parameters()),
-    optim.Adadelta(resnet_model.fc.parameters()),
-    optim.RMSprop(resnet_model.fc.parameters()),
+    optim.Adam(model.fc.parameters()),
+    optim.Adagrad(model.fc.parameters()),
+    optim.Adadelta(model.fc.parameters()),
+    optim.RMSprop(model.fc.parameters()),
 ]
 
 # Loss function
@@ -67,7 +67,7 @@ for opt in optimizer_list:
             data, targets = data.to(compute_device), targets.to(compute_device)
 
             opt.zero_grad()
-            predictions = resnet_model(data)
+            predictions = model(data)
             loss = loss_function(predictions, targets)
             loss.backward()
             opt.step()
