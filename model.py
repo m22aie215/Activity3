@@ -41,8 +41,12 @@ training_loader = torch.utils.data.DataLoader(
 model = torchvision.models.resnet152(pretrained=True)
 
 # List of optimizers
-# version1 - only use Adam optimizer
-optimizer_list = [optim.Adam(model.fc.parameters())]
+optimizer_list = [
+    optim.Adam(model.fc.parameters()),
+    optim.Adagrad(model.fc.parameters()),
+    optim.Adadelta(model.fc.parameters()),
+    optim.RMSprop(model.fc.parameters()),
+]
 
 # Loss function
 loss_function = nn.CrossEntropyLoss()
