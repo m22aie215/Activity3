@@ -37,16 +37,13 @@ training_loader = torch.utils.data.DataLoader(
 )
 
 # Model initialization
-# Version 1 using resnet152 model
-model = torchvision.models.resnet152(pretrained=True)
+# Fix - change to resnet101
+model = torchvision.models.resnet101(pretrained=True)
 
 # List of optimizers
+# fix keep only adam.
 optimizer_list = [
     optim.Adam(model.fc.parameters()),
-    optim.Adagrad(model.fc.parameters()),
-    optim.Adadelta(model.fc.parameters()),
-    optim.RMSprop(model.fc.parameters()),
-]
 
 # Loss function
 loss_function = nn.CrossEntropyLoss()
