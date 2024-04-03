@@ -37,7 +37,8 @@ training_loader = torch.utils.data.DataLoader(
 )
 
 # Model initialization
-model = torchvision.models.resnet101(pretrained=True)
+# Version 1 using resnet152 model
+model = torchvision.models.resnet152(pretrained=True)
 
 # List of optimizers
 optimizer_list = [
